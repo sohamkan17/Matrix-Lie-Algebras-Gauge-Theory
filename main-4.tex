@@ -1,0 +1,327 @@
+\documentclass{article}
+
+% Math packages (fixes \mathbb, \dagger, \longmapsto, etc.)
+\usepackage{amsmath, amssymb, amsfonts}
+
+\title{Matrix Lie Algebras II - Gauge Theory 2025-2026}
+\author{Soham Kandalgaonkar}
+\date{February 2026}
+\usepackage{amsmath,amssymb,amsthm}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\begin{document}
+
+\maketitle
+
+\section{What is $GL(n,\mathbb{C})$?}
+
+\begin{definition}
+The \textbf{general linear group of degree $n$ over $\mathbb{C}$}, denoted $GL(n,\mathbb{C})$, is defined as
+\[
+GL(n,\mathbb{C}) = \{ A \in M_n(\mathbb{C}) \mid \det(A) \neq 0 \}.
+\]
+\end{definition}
+
+Equivalently, $GL(n,\mathbb{C})$ is the set of all invertible $n \times n$ matrices with complex entries. Since a matrix is invertible if and only if its determinant is nonzero, the two characterizations agree.
+
+
+\subsection*{Geometric Structure}
+
+The space $M_n(\mathbb{C})$ of all complex $n \times n$ matrices can be identified with
+\[
+\mathbb{C}^{n^2} \cong \mathbb{R}^{2n^2}.
+\]
+
+The determinant
+\[
+\det : M_n(\mathbb{C}) \to \mathbb{C}
+\]
+is a polynomial map in the matrix entries and, therefore, continuous.
+
+Since
+\[
+GL(n,\mathbb{C}) = \det^{-1}(\mathbb{C} \setminus \{0\}),
+\]
+and $\mathbb{C} \setminus \{0\}$ is an open subset of $\mathbb{C}$, it follows that
+\[
+GL(n,\mathbb{C})
+\]
+is an open subset of $M_n(\mathbb{C})$.
+
+
+Therefore,
+
+\[
+GL(n,\mathbb{C})
+\text{ is a smooth real manifold of dimension } 2n^2.
+\]
+
+\subsection*{Lie Algebra of $GL(n,\mathbb{C})$}
+
+The Lie algebra of $GL(n,\mathbb{C})$ is
+
+\[
+\mathfrak{gl}(n,\mathbb{C}) = M_n(\mathbb{C})
+\]
+
+with Lie bracket defined by the commutator:
+
+\[
+[X,Y] = XY - YX.
+\]
+
+The tangent space at the identity satisfies the following condition.
+
+\[
+T_I GL(n,\mathbb{C}) = M_n(\mathbb{C}),
+\]
+
+\textit{Proof.}
+Let $M_n(\mathbb{C})$ be a real vector space of dimension $2n^2$ and note that
+$GL(n,\mathbb{C}) \subset M_n(\mathbb{C})$. We first must show that
+$GL(n,\mathbb{C})$ is an open subset of $M_n(\mathbb{C})$.
+The determinant map
+\[
+\det : M_n(\mathbb{C}) \to \mathbb{C}
+\]
+is continuous, as it is a polynomial of its matrix entries. Previously stated,
+\[
+GL(n,\mathbb{C})=\det^{-1}(\mathbb{C}\setminus\{0\}).
+\]
+Since $\mathbb{C} \setminus \{0\}$ is open in $\mathbb{C}$, it follows that
+$GL(n,\mathbb{C})$ is open in $M_n(\mathbb{C})$. Now let there be
+finite-dimensional real vector space $V$ such that
+\[
+U \subset V.
+\]
+Then for any $p \in U$, the tangent space $T_pU$ is in $V$.
+
+Now, let
+\[
+U = GL(n,\mathbb{C})
+\]
+\[
+V = M_n(\mathbb{C})
+\]
+\[
+p = I
+\]
+
+we obtain
+\[
+T_I GL(n,\mathbb{C}) \cong M_n(\mathbb{C}).
+\]
+
+With the definition of a tangent space of an open subset with a vector space itself, we get:
+\[
+T_I GL(n,\mathbb{C}) = M_n(\mathbb{C}).
+\]
+
+This proves our claim. \(\square\)
+
+For every matrix $X \in M_n(\mathbb{C})$ generates a one-parameter subgroup
+
+\[
+A(t) = e^{tX}.
+\]
+
+Thus, $\mathfrak{gl}(n,\mathbb{C})$ consists of all complex $n \times n$ matrices equipped with the commutator bracket.
+
+\[
+\text{Lie Product Formula: }\text{For any } X,Y \in \mathfrak{gl}(n,\mathbb{C}),
+\text{ the exponential of their sum can be expressed as:}
+\]
+
+\[
+e^{X+Y} \;=\; \lim_{m\to\infty}\left(e^{X/m}e^{Y/m}\right)^m.
+\]
+
+\subsection{The Special Linear Group $SL(2,\mathbb{R})$ is defined as:}
+
+
+\[
+SL(2,\mathbb{R})=\left\{\,A\in M_2(\mathbb{R}) \;\middle|\; \det(A)=1\,\right\}
+\]
+
+\[
+\text{Its associated Lie algebra } \mathfrak{sl}(2,\mathbb{R}) \text{ consists of all } 2\times 2
+\text{ real matrices with zero trace:}
+\]
+
+\[
+\mathfrak{sl}(2,\mathbb{R})=\left\{\,X\in M_2(\mathbb{R}) \;\middle|\; \operatorname{Tr}(X)=0\,\right\}
+\]
+
+\section{Properties of the Hermitian Conjugate}
+
+Let $U$ be a complex $n \times n$ matrix.
+
+\begin{definition}
+The \textbf{Hermitian conjugate} (or \textbf{conjugate transpose}) of $U$, denoted $U^\dagger$, is defined by
+\[
+U^\dagger = \overline{U}^{\,T}.
+\]
+\end{definition}
+
+That is, the Hermitian conjugate is obtained by:
+
+\begin{itemize}
+    \item Taking the transpose (interchanging rows and columns),
+    \item Taking the complex conjugate of each entry.
+\end{itemize}
+\subsection{Standard Inner Product}
+The standard inner product on $\mathbb{C}^n$ is:
+\[
+\langle a,b\rangle=\sum_{i=1}^n \overline{a_i}\,b_i.
+\]
+\[
+\text{The standard inner product on } \mathbb{C}^n \text{ satisfies the positivity condition:}
+\]
+
+\[
+\langle v, v\rangle \ge 0 \ \text{for all } v\in\mathbb{C}^n,
+\qquad
+\langle v, v\rangle = 0 \iff v=0.
+\]
+
+\[
+\text{This allows us to define the norm of a vector as }
+\|v\|=\sqrt{\langle v,v\rangle}.
+\]
+
+\subsection*{Entry-by-Entry Formula}
+
+If $U = [u_{ij}]$, then
+
+\[
+(U^\dagger)_{ij} = \overline{u_{ji}}.
+\]
+
+\subsection*{Example}
+
+Let
+
+\[
+U =
+\begin{pmatrix}
+2 + i & 2 \\
+3i & 5 - i
+\end{pmatrix}.
+\]
+
+Then
+
+\[
+U^\dagger =
+\begin{pmatrix}
+2 - i & -3i \\
+2 & 5 + i
+\end{pmatrix}.
+\]
+
+\subsection*{Algebraic Properties}
+
+For complex matrices $A,B$ and scalar $\lambda \in \mathbb{C}$:
+
+\begin{align*}
+(A^\dagger)^\dagger &= A, \\
+(A+B)^\dagger &= A^\dagger + B^\dagger, \\
+(\lambda A)^\dagger &= \overline{\lambda}\, A^\dagger, \\
+(AB)^\dagger &= B^\dagger A^\dagger.
+\end{align*}
+\subsection{Hermitian and Unitary Matrices}
+A matrix \(H\) is Hermitian (or self-adjoint) if \(H = H^\dagger\).
+An equivalent characterization using the inner product is:
+
+\[
+\langle v, Hw\rangle = \langle Hv, w\rangle
+\quad \text{for all } v,w \in \mathbb{C}^n.
+\]
+
+\[
+\text{A consequence for Hermitian matrices is that }
+\langle v, Hv\rangle \in \mathbb{R}
+\quad \text{for all } v.
+\]
+\subsection*{Unitary Matrices}
+
+A matrix $U$ is \textbf{unitary} if
+
+\[
+U^\dagger U = I = U U^\dagger.
+\]
+
+Equivalently,
+
+\[
+U^{-1} = U^\dagger.
+\]
+
+\textit{Proof.}
+A matrix $U$ is unitary precisely when it is adjoint to its inverse. By definition, $U$ is unitary if
+\[
+U^\dagger = U^{-1}.
+\]
+This is equivalent to saying that $U^\dagger$ is both a left inverse and a right inverse of $U$, that is,
+\[
+U^\dagger U = I
+\qquad \text{and} \qquad
+UU^\dagger = I.
+\]
+Hence, $U$ is unitary if
+\[
+U^\dagger U = I = UU^\dagger.
+\]
+\hfill $\square$
+
+The unitary group is
+
+\[
+U(n) = \{ U \in GL(n,\mathbb{C}) \mid U^\dagger U = I \}.
+\]
+
+Additionally, 
+
+\[
+\text{A matrix } U \text{ is unitary if and only if it preserves the inner product:}
+\]
+
+\[
+\langle v,w\rangle = \langle Uv, Uw\rangle
+\quad \text{for all } v,w \in \mathbb{C}^n.
+\]
+
+\subsection*{Relation to Lie Algebra of $U(n)$}
+
+Let $A(t)$ be a smooth path in $U(n)$ with $A(0) = I$.  
+Since
+
+\[
+A(t) A^\dagger(t) = I,
+\]
+
+differentiating at $t=0$ gives
+
+\[
+A'(0) + A'(0)^\dagger = 0.
+\]
+
+Thus, the tangent space at the identity consists of matrices $X$ satisfying
+
+\[
+X^\dagger = -X.
+\]
+
+These matrices are \textbf{anti-Hermitian}.
+
+Therefore, the Lie algebra of $U(n)$ is
+
+\[
+\mathfrak{U}(n)
+=
+\{ X \in M_n(\mathbb{C}) \mid X^\dagger = -X \}.
+\]
+
+
+\end{document}
